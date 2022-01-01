@@ -13,7 +13,7 @@ function saveToDos() {
 function deleteTodo(event) {
     const li = event.target.parentElement; //event(여기서는 click)에서 타겟의 부모 요소
 
-    li.remove();// 요소 지우는 함수
+    li.remove(); // 요소 지우는 함수
     toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
     saveToDos();
 }
@@ -21,10 +21,16 @@ function deleteTodo(event) {
 function paintToDo(newTodo) {
     const li = document.createElement("li");
     li.id = newTodo.id;
+    li
+        .classList
+        .add("toDoLi");
     const span = document.createElement("span");
     span.innerText = newTodo.text;
     const button = document.createElement("button");
     button.innerText = "x";
+    button
+        .classList
+        .add("deButton");
     button.style.color = "red";
     button.addEventListener("click", deleteTodo)
     li.appendChild(span);
@@ -36,7 +42,10 @@ function handleToDoSubit(event) {
     event.preventDefault();
     const newTodo = toDoInput.value;
     toDoInput.value = "";
-    const newTodoObj = { text: newTodo, id: Date.now(), };
+    const newTodoObj = {
+        text: newTodo,
+        id: Date.now()
+    };
     toDos.push(newTodoObj);
     paintToDo(newTodoObj);
     saveToDos()

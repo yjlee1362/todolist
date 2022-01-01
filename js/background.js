@@ -7,5 +7,4 @@ const chosenImage = images[Math.floor(Math.random() * images.length)];
 const bgi = document.createElement("img");
 
 bgi.src = `img/${chosenImage}`;
-
-document.body.appendChild(bgi);
+const body = document.querySelector("body");
